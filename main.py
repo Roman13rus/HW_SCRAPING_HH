@@ -13,6 +13,11 @@ def get_html(url):
     return src
 
 def get_information():
+    '''
+    The function of getting data (links) to the pages of each vacancy. 
+    It is configured to crawl 10 pages with professions, 20 vacancies in each. 
+    The output generates a json file with links to each vacancy.
+    '''
     link_dict = {}
     count_key = 1
     for i in range(0,10):
@@ -27,6 +32,10 @@ def get_information():
         json.dump(link_dict, f, indent=4, ensure_ascii=False)
 
 def pages_loader(file):
+    '''The function of obtaining data for each vacancy. 
+    Collects salary data, company name, links to a vacancy in hh.ru , the address of the organization. 
+    Returns a list of dictionaries.
+    '''
     get_information()
     with open(file, 'r', encoding='utf-8') as f:
         pages = json.load(f)
